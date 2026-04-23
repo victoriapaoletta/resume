@@ -1,0 +1,960 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Your Name — Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --ink: #1a1814;
+    --ink-soft: #5a5650;
+    --ink-faint: #9a9690;
+    --paper: #faf9f6;
+    --paper-warm: #f3f0eb;
+    --rule: #d8d4cc;
+    --accent-data: #1a5c3a;
+    --accent-data-light: #e8f2ec;
+    --accent-admin: #4a2d7a;
+    --accent-admin-light: #ede8f5;
+    --accent-fitness: #b34a00;
+    --accent-fitness-light: #f7efe8;
+    --accent-retail: #8a2040;
+    --accent-retail-light: #f5e8ed;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--paper);
+    color: var(--ink);
+    font-size: 16px;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    background: var(--paper);
+    border-bottom: 1px solid var(--rule);
+    padding: 0 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 56px;
+  }
+
+  .nav-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.25rem;
+    font-weight: 400;
+    letter-spacing: 0.02em;
+    color: var(--ink);
+    text-decoration: none;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+  }
+
+  .nav-links a {
+    font-size: 0.8rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--ink); }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding: 6rem 2rem 4rem;
+    max-width: 1100px;
+    margin: 0 auto;
+    position: relative;
+  }
+
+  .hero-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+    width: 100%;
+  }
+
+  .hero-text {}
+
+  .hero-photo {
+    width: 80px; height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid var(--rule);
+    margin-bottom: 1.25rem;
+    display: block;
+  }
+
+  .hero-photo-placeholder {
+    width: 80px; height: 80px;
+    border-radius: 50%;
+    background: var(--paper-warm);
+    border: 2px dashed var(--rule);
+    margin-bottom: 1.25rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.65rem;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    color: var(--ink-faint);
+    text-align: center;
+    line-height: 1.4;
+    padding: 0.5rem;
+  }
+
+  .hero-label {
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    margin-bottom: 1.5rem;
+  }
+
+  .hero-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(3.5rem, 7vw, 5.5rem);
+    font-weight: 300;
+    line-height: 1.05;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+    margin-bottom: 1.5rem;
+  }
+
+  .hero-name em {
+    font-style: italic;
+    font-weight: 300;
+  }
+
+  .hero-bio {
+    font-size: 1.05rem;
+    color: var(--ink-soft);
+    line-height: 1.75;
+    max-width: 440px;
+    margin-bottom: 2.5rem;
+  }
+
+  .hero-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .tag {
+    display: inline-block;
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    padding: 0.35rem 0.85rem;
+    border-radius: 100px;
+    border: 1px solid var(--rule);
+    color: var(--ink-soft);
+    background: transparent;
+  }
+
+  .hero-visual {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  /* MODE CARDS on hero */
+  .mode-card {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.25rem 1.5rem;
+    border-radius: 12px;
+    border: 1px solid var(--rule);
+    background: white;
+    text-decoration: none;
+    transition: transform 0.2s, box-shadow 0.2s;
+    cursor: pointer;
+  }
+
+  .mode-card:hover {
+    transform: translateX(4px);
+    box-shadow: -4px 0 0 currentColor;
+  }
+
+  .mode-card.data { --c: var(--accent-data); color: var(--accent-data); }
+  .mode-card.admin { --c: var(--accent-admin); color: var(--accent-admin); }
+  .mode-card.fitness { --c: var(--accent-fitness); color: var(--accent-fitness); }
+  .mode-card.retail { --c: var(--accent-retail); color: var(--accent-retail); }
+
+  .mode-dot {
+    width: 10px; height: 10px;
+    border-radius: 50%;
+    background: currentColor;
+    flex-shrink: 0;
+  }
+
+  .mode-card-text { flex: 1; }
+
+  .mode-card-title {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--ink);
+    display: block;
+  }
+
+  .mode-card-sub {
+    font-size: 0.78rem;
+    color: var(--ink-faint);
+  }
+
+  .mode-arrow {
+    font-size: 0.9rem;
+    color: currentColor;
+    opacity: 0.6;
+  }
+
+  /* SECTION LAYOUT */
+  section {
+    padding: 6rem 2rem;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .section-rule {
+    width: 100%;
+    height: 1px;
+    background: var(--rule);
+    margin-bottom: 4rem;
+  }
+
+  .section-header {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    margin-bottom: 3rem;
+  }
+
+  .section-label {
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    margin-bottom: 0.5rem;
+  }
+
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 300;
+    line-height: 1.1;
+    color: var(--ink);
+  }
+
+  .section-title em { font-style: italic; }
+
+  /* CAREER MODES */
+  #modes { padding-top: 0; }
+
+  .modes-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+  }
+
+  .career-card {
+    padding: 2.5rem;
+    border-radius: 16px;
+    border: 1px solid var(--rule);
+    background: white;
+    transition: transform 0.2s;
+  }
+
+  .career-card:hover { transform: translateY(-2px); }
+
+  .career-card-accent {
+    width: 40px; height: 4px;
+    border-radius: 2px;
+    margin-bottom: 1.5rem;
+  }
+
+  .career-card.data .career-card-accent { background: var(--accent-data); }
+  .career-card.admin .career-card-accent { background: var(--accent-admin); }
+  .career-card.fitness .career-card-accent { background: var(--accent-fitness); }
+  .career-card.retail .career-card-accent { background: var(--accent-retail); }
+
+  .career-card-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.5rem;
+    font-weight: 400;
+    margin-bottom: 0.75rem;
+    color: var(--ink);
+  }
+
+  .career-card-desc {
+    font-size: 0.9rem;
+    color: var(--ink-soft);
+    line-height: 1.7;
+    margin-bottom: 1.5rem;
+  }
+
+  .career-skills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .skill-chip {
+    font-size: 0.72rem;
+    font-weight: 500;
+    padding: 0.25rem 0.7rem;
+    border-radius: 100px;
+    letter-spacing: 0.03em;
+  }
+
+  .data .skill-chip { background: var(--accent-data-light); color: var(--accent-data); }
+  .admin .skill-chip { background: var(--accent-admin-light); color: var(--accent-admin); }
+  .fitness .skill-chip { background: var(--accent-fitness-light); color: var(--accent-fitness); }
+  .retail .skill-chip { background: var(--accent-retail-light); color: var(--accent-retail); }
+
+  .career-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.8rem;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    text-decoration: none;
+    color: inherit;
+    transition: gap 0.2s;
+  }
+
+  .career-cta:hover { gap: 0.8rem; }
+
+  .data .career-cta { color: var(--accent-data); }
+  .admin .career-cta { color: var(--accent-admin); }
+  .fitness .career-cta { color: var(--accent-fitness); }
+  .retail .career-cta { color: var(--accent-retail); }
+
+  /* TIMELINE */
+  .timeline { position: relative; }
+
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 8px; bottom: 0;
+    width: 1px;
+    background: var(--rule);
+  }
+
+  .timeline-item {
+    padding-left: 2rem;
+    padding-bottom: 2.5rem;
+    position: relative;
+  }
+
+  .timeline-item::before {
+    content: '';
+    position: absolute;
+    left: -4px; top: 8px;
+    width: 9px; height: 9px;
+    border-radius: 50%;
+    background: var(--paper);
+    border: 1.5px solid var(--ink-faint);
+  }
+
+  .timeline-date {
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    color: var(--ink-faint);
+    margin-bottom: 0.25rem;
+  }
+
+  .timeline-role {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.2rem;
+    font-weight: 400;
+    color: var(--ink);
+  }
+
+  .timeline-company {
+    font-size: 0.85rem;
+    color: var(--ink-soft);
+    margin-bottom: 0.5rem;
+  }
+
+  .timeline-detail {
+    font-size: 0.875rem;
+    color: var(--ink-soft);
+    line-height: 1.65;
+  }
+
+  /* QUALS */
+  .quals-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1rem;
+  }
+
+  .qual-card {
+    padding: 1.5rem;
+    border: 1px solid var(--rule);
+    border-radius: 12px;
+    background: white;
+  }
+
+  .qual-icon {
+    font-size: 1.5rem;
+    margin-bottom: 0.75rem;
+    display: block;
+  }
+
+  .qual-title {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--ink);
+    margin-bottom: 0.25rem;
+    line-height: 1.4;
+  }
+
+  .qual-body {
+    font-size: 0.8rem;
+    color: var(--ink-faint);
+  }
+
+  /* ABOUT */
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.4fr;
+    gap: 5rem;
+    align-items: start;
+  }
+
+  .about-facts {}
+
+  .fact-item {
+    padding: 1.25rem 0;
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .fact-label {
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    margin-bottom: 0.3rem;
+  }
+
+  .fact-value {
+    font-size: 0.95rem;
+    color: var(--ink);
+  }
+
+  .about-text p {
+    font-size: 1.05rem;
+    color: var(--ink-soft);
+    line-height: 1.85;
+    margin-bottom: 1.5rem;
+  }
+
+  .about-text p:last-child { margin-bottom: 0; }
+
+  .about-text strong {
+    font-weight: 500;
+    color: var(--ink);
+  }
+
+  /* CONTACT */
+  #contact {
+    background: var(--ink);
+    color: var(--paper);
+    max-width: 100%;
+    padding: 5rem 2rem;
+  }
+
+  .contact-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+  }
+
+  .contact-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2.5rem, 5vw, 3.5rem);
+    font-weight: 300;
+    line-height: 1.1;
+    margin-bottom: 1rem;
+    color: var(--paper);
+  }
+
+  .contact-title em { font-style: italic; }
+
+  .contact-sub {
+    font-size: 0.95rem;
+    color: #9a9690;
+    line-height: 1.7;
+  }
+
+  .contact-links {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .contact-link {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 1.25rem;
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 10px;
+    text-decoration: none;
+    color: var(--paper);
+    transition: background 0.2s, border-color 0.2s;
+  }
+
+  .contact-link:hover {
+    background: rgba(255,255,255,0.06);
+    border-color: rgba(255,255,255,0.25);
+  }
+
+  .contact-link-label {
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #9a9690;
+  }
+
+  .contact-link-value {
+    font-size: 0.9rem;
+    color: var(--paper);
+  }
+
+  /* DOWNLOAD BUTTONS */
+  .resume-downloads {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.75rem;
+    margin-top: 2rem;
+  }
+
+  .dl-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.85rem 1rem;
+    border-radius: 8px;
+    font-size: 0.78rem;
+    font-weight: 500;
+    letter-spacing: 0.03em;
+    text-decoration: none;
+    border: 1px solid var(--rule);
+    background: white;
+    color: var(--ink);
+    cursor: pointer;
+    transition: background 0.15s, transform 0.15s;
+  }
+
+  .dl-btn:hover {
+    background: var(--paper-warm);
+    transform: translateY(-1px);
+  }
+
+  .dl-dot {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  /* ANIMATIONS */
+  .fade-up {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+
+  .fade-up.visible {
+    opacity: 1;
+    transform: none;
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 768px) {
+    .hero-inner { grid-template-columns: 1fr; gap: 3rem; }
+    .modes-grid { grid-template-columns: 1fr; }
+    .about-grid { grid-template-columns: 1fr; gap: 3rem; }
+    .contact-inner { grid-template-columns: 1fr; gap: 3rem; }
+    .resume-downloads { grid-template-columns: 1fr; }
+    .nav-links { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-name">Your Name</a>
+  <ul class="nav-links">
+    <li><a href="#modes">What I do</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#qualifications">Qualifications</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-text fade-up">
+      <div class="hero-photo-placeholder">your<br>photo</div>
+      <p class="hero-label">Sydney, NSW &nbsp;·&nbsp; Available for work</p>
+      <h1 class="hero-name">Your<br><em>Name</em></h1>
+      <p class="hero-bio">Data analyst, fitness instructor, and people-first professional. Nine years in analytics, now channelling that precision into health, movement, and meaningful work.</p>
+      <div class="hero-tags">
+        <span class="tag">SQL &amp; Python</span>
+        <span class="tag">Pilates Instructor</span>
+        <span class="tag">Swimming Teacher</span>
+        <span class="tag">20+ countries</span>
+        <span class="tag">First Aid certified</span>
+      </div>
+    </div>
+
+    <div class="hero-visual fade-up" style="transition-delay: 0.15s;">
+      <a class="mode-card data" href="#data">
+        <span class="mode-dot"></span>
+        <span class="mode-card-text">
+          <span class="mode-card-title">Data &amp; Analytics</span>
+          <span class="mode-card-sub">9 years · Bloomberg · Zurich Insurance</span>
+        </span>
+        <span class="mode-arrow">→</span>
+      </a>
+      <a class="mode-card fitness" href="#fitness">
+        <span class="mode-dot"></span>
+        <span class="mode-card-text">
+          <span class="mode-card-title">Fitness &amp; Instruction</span>
+          <span class="mode-card-sub">Pilates · Swimming · Lifeguarding</span>
+        </span>
+        <span class="mode-arrow">→</span>
+      </a>
+      <p style="font-size:0.8rem;color:var(--ink-faint);padding:0.5rem 0.25rem;line-height:1.6;">Also available for admin, reception, and retail roles — particularly within health, fitness, and lifestyle businesses.</p>
+    </div>
+  </div>
+</div>
+
+<!-- WHAT I DO -->
+<section id="modes">
+  <div class="section-rule"></div>
+  <div class="section-header">
+    <div>
+      <p class="section-label">What I do</p>
+      <h2 class="section-title">How I can<br><em>contribute</em></h2>
+    </div>
+  </div>
+  <div class="modes-grid">
+
+    <div class="career-card data fade-up" id="data">
+      <div class="career-card-accent"></div>
+      <h3 class="career-card-title">Data &amp; Analytics</h3>
+      <p class="career-card-desc">Nine years delivering end-to-end analytics across finance and technology. I translate messy datasets into clear decisions — from SQL pipelines and Python automation to interactive dashboards and executive presentations. Available for 3–6 month contracts across any industry.</p>
+      <div class="career-skills">
+        <span class="skill-chip">SQL</span>
+        <span class="skill-chip">Python</span>
+        <span class="skill-chip">Power BI</span>
+        <span class="skill-chip">Qlik Sense</span>
+        <span class="skill-chip">Tableau</span>
+        <span class="skill-chip">Excel</span>
+        <span class="skill-chip">Stakeholder comms</span>
+        <span class="skill-chip">Agile / Scrum</span>
+      </div>
+      <a class="career-cta" href="#contact">Get in touch →</a>
+    </div>
+
+    <div class="career-card fitness fade-up" id="fitness" style="transition-delay:0.1s;">
+      <div class="career-card-accent"></div>
+      <h3 class="career-card-title">Fitness &amp; Instruction</h3>
+      <p class="career-card-desc">Qualified Mat Pilates Instructor and AUSTSWIM-certified Swimming Teacher, currently teaching part-time in Sydney. Ten years as a competitive swimmer at regional and national level gives me deep technical knowledge of aquatic environments, stroke mechanics, and safe teaching practice.</p>
+      <div class="career-skills">
+        <span class="skill-chip">Mat Pilates (Level 3)</span>
+        <span class="skill-chip">AUSTSWIM</span>
+        <span class="skill-chip">First Aid &amp; CPR</span>
+        <span class="skill-chip">WWCC</span>
+        <span class="skill-chip">Lesson planning</span>
+        <span class="skill-chip">All ages &amp; abilities</span>
+      </div>
+      <a class="career-cta" href="#contact">Get in touch →</a>
+    </div>
+
+  </div>
+
+  <div class="career-card fade-up" id="admin" style="margin-top:1.5rem;border-left:3px solid var(--rule);border-radius:0 12px 12px 0;background:white;">
+    <p style="font-size:0.7rem;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:var(--ink-faint);margin-bottom:0.6rem;">Also available for</p>
+    <p style="font-size:1rem;font-weight:500;color:var(--ink);margin-bottom:0.5rem;">Admin, Reception &amp; Retail roles</p>
+    <p style="font-size:0.875rem;color:var(--ink-soft);line-height:1.7;max-width:780px;">Particularly within health, fitness, and lifestyle businesses. My background in high-volume client communication (40–60 daily queries at Bloomberg), lead conversion, and cross-cultural people skills translates naturally to front-desk, operations, and customer-facing retail roles — especially in environments where a genuine understanding of active lifestyles matters.</p>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="section-rule"></div>
+  <div class="section-header">
+    <div>
+      <p class="section-label">Experience</p>
+      <h2 class="section-title">Where I've<br><em>worked</em></h2>
+    </div>
+  </div>
+
+  <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 4rem;">
+    <div>
+      <p style="font-size:0.7rem;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:var(--ink-faint);margin-bottom:1.5rem;">Professional history</p>
+      <div class="timeline">
+
+        <div class="timeline-item fade-up">
+          <p class="timeline-date">Nov 2025 – Present</p>
+          <p class="timeline-role">Swimming Instructor</p>
+          <p class="timeline-company">Swim Teaching Company, Sydney NSW</p>
+          <p class="timeline-detail">Delivering lessons across all ages and abilities. Building student confidence through adaptive, safety-first teaching.</p>
+        </div>
+
+        <div class="timeline-item fade-up">
+          <p class="timeline-date">Nov 2025 – Present</p>
+          <p class="timeline-role">Client Follow-Up &amp; Lead Conversion</p>
+          <p class="timeline-company">Swim Teaching Company, Sydney NSW</p>
+          <p class="timeline-detail">Outbound lead nurturing via phone, email and SMS. Email/SMS marketing, pipeline analytics, and workflow automation.</p>
+        </div>
+
+        <div class="timeline-item fade-up">
+          <p class="timeline-date">Oct 2023 – Oct 2025</p>
+          <p class="timeline-role">Career Break — Travel</p>
+          <p class="timeline-company">20+ countries across 4 continents</p>
+          <p class="timeline-detail">Independent travel building cross-cultural communication, adaptability, and a global perspective.</p>
+        </div>
+
+        <div class="timeline-item fade-up">
+          <p class="timeline-date">Jul 2021 – Oct 2023</p>
+          <p class="timeline-role">Senior Data Analyst</p>
+          <p class="timeline-company">Bloomberg L.P., London UK</p>
+          <p class="timeline-detail">Global Data Analytics team. Qlik Sense dashboards, stakeholder helpdesk (40–60 daily), global training delivery, and senior leadership reporting.</p>
+        </div>
+
+        <div class="timeline-item fade-up">
+          <p class="timeline-date">Aug 2019 – Jul 2021</p>
+          <p class="timeline-role">Data Analyst, Holdings</p>
+          <p class="timeline-company">Bloomberg L.P., London UK</p>
+          <p class="timeline-detail">SQL/Python data quality work. Expanded market coverage by 8%. Scrum Master for Agile team.</p>
+        </div>
+
+        <div class="timeline-item fade-up">
+          <p class="timeline-date">Feb 2018 – Jul 2019</p>
+          <p class="timeline-role">Actuarial Analyst</p>
+          <p class="timeline-company">Zurich Insurance, UK</p>
+        </div>
+
+        <div class="timeline-item fade-up">
+          <p class="timeline-date">Sep 2014 – Feb 2018</p>
+          <p class="timeline-role">Data Analyst Apprentice</p>
+          <p class="timeline-company">Zurich Insurance, UK</p>
+        </div>
+
+      </div>
+    </div>
+
+    <div>
+      <p style="font-size:0.7rem;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:var(--ink-faint);margin-bottom:1.5rem;">Download my resume</p>
+      <p style="font-size:0.875rem;color:var(--ink-soft);margin-bottom:1.25rem;line-height:1.7;">Each version is tailored for a different type of role. Download the one that's relevant — or reach out and I'll send you exactly what you need.</p>
+
+      <div style="display:flex;flex-direction:column;gap:0.75rem;">
+        <a class="dl-btn" href="resume-data-analyst.docx" download>
+          <span class="dl-dot" style="background:var(--accent-data);"></span>
+          Data &amp; Analytics Resume
+        </a>
+        <a class="dl-btn" href="resume-fitness.docx" download>
+          <span class="dl-dot" style="background:var(--accent-fitness);"></span>
+          Fitness &amp; Instruction Resume
+        </a>
+        <a class="dl-btn" href="resume-admin-ops.docx" download>
+          <span class="dl-dot" style="background:var(--accent-admin);"></span>
+          Admin &amp; Operations Resume
+        </a>
+        <a class="dl-btn" href="retail-resume.docx" download>
+          <span class="dl-dot" style="background:var(--accent-retail);"></span>
+          Retail &amp; Customer Service Resume
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- QUALIFICATIONS -->
+<section id="qualifications" style="background: var(--paper-warm); max-width:100%; padding: 6rem 2rem;">
+  <div style="max-width:1100px;margin:0 auto;">
+    <div class="section-rule"></div>
+    <div class="section-header">
+      <div>
+        <p class="section-label">Qualifications</p>
+        <h2 class="section-title">Credentials &amp;<br><em>certifications</em></h2>
+      </div>
+    </div>
+    <div class="quals-grid">
+
+      <div class="qual-card fade-up">
+        <span class="qual-icon">🏊</span>
+        <p class="qual-title">Teacher of Swimming &amp; Water Safety</p>
+        <p class="qual-body">AUSTSWIM · Sydney NSW · Dec 2025</p>
+      </div>
+
+      <div class="qual-card fade-up">
+        <span class="qual-icon">🧘</span>
+        <p class="qual-title">Level 3 Diploma in Teaching Mat Pilates</p>
+        <p class="qual-body">London Pilates Academy · YMCA Awards &amp; CIMSPA Endorsed · Oct 2025</p>
+      </div>
+
+      <div class="qual-card fade-up">
+        <span class="qual-icon">🩺</span>
+        <p class="qual-title">First Aid &amp; CPR</p>
+        <p class="qual-body">Australian Red Cross · HLTAID009 / 010 / 011 · Nov 2025</p>
+      </div>
+
+      <div class="qual-card fade-up">
+        <span class="qual-icon">✅</span>
+        <p class="qual-title">Working With Children Check</p>
+        <p class="qual-body">NSW · Current &amp; valid · Nov 2025</p>
+      </div>
+
+      <div class="qual-card fade-up">
+        <span class="qual-icon">📊</span>
+        <p class="qual-title">Data Analyst Level 4 Apprenticeship</p>
+        <p class="qual-body">Multiverse, UK · 2020–2021</p>
+      </div>
+
+      <div class="qual-card fade-up">
+        <span class="qual-icon">📐</span>
+        <p class="qual-title">Certified Actuarial Analyst (CAA)</p>
+        <p class="qual-body">CAA Global, UK · 2014–2017</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-rule"></div>
+  <div class="section-header">
+    <div>
+      <p class="section-label">About</p>
+      <h2 class="section-title">A bit<br><em>about me</em></h2>
+    </div>
+  </div>
+  <div class="about-grid">
+    <div class="about-facts">
+      <div class="fact-item">
+        <p class="fact-label">Based</p>
+        <p class="fact-value">Sydney, NSW</p>
+      </div>
+      <div class="fact-item">
+        <p class="fact-label">Availability</p>
+        <p class="fact-value">Casual &amp; part-time</p>
+      </div>
+      <div class="fact-item">
+        <p class="fact-label">Background</p>
+        <p class="fact-value">Data analytics → Fitness &amp; instruction</p>
+      </div>
+      <div class="fact-item">
+        <p class="fact-label">Sport</p>
+        <p class="fact-value">Competitive swimming, 10 years<br><span style="font-size:0.85rem;color:var(--ink-faint);">Regional &amp; national level</span></p>
+      </div>
+      <div class="fact-item">
+        <p class="fact-label">Travel</p>
+        <p class="fact-value">20+ countries across 4 continents</p>
+      </div>
+    </div>
+    <div class="about-text">
+      <p>I spent nine years as a Senior Data Analyst — at Bloomberg in London and Zurich Insurance — learning how to find clarity in complexity and communicate it to people who need to act on it. That precision and curiosity has stayed with me through every chapter since.</p>
+      <p>After nearly a decade in corporate analytics, I took two years to travel and recharge — 20+ countries, dozens of cultures, and a complete reset. Along the way, I discovered a deeper commitment to health, movement, and teaching. I came back qualified as both a <strong>Mat Pilates Instructor</strong> and a <strong>Swimming Teacher</strong>, and now I split my time between the pool deck and continued professional work.</p>
+      <p>I'm the kind of person who brings analytical rigour to whatever I'm doing — whether that's designing a dashboard, planning a swim lesson, or helping a customer find the right product. I'm genuinely curious about people, reliable under pressure, and always looking to add more than expected.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="contact-inner">
+    <div>
+      <p style="font-size:0.7rem;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;color:#9a9690;margin-bottom:1rem;">Get in touch</p>
+      <h2 class="contact-title">Let's work<br><em>together</em></h2>
+      <p class="contact-sub">Whether you need a data contractor, a fitness instructor, a studio receptionist, or someone to bring energy to your retail floor — I'd love to hear from you.</p>
+    </div>
+    <div class="contact-links">
+      <a class="contact-link" href="mailto:your.email@email.com">
+        <div>
+          <p class="contact-link-label">Email</p>
+          <p class="contact-link-value">your.email@email.com</p>
+        </div>
+      </a>
+      <a class="contact-link" href="https://linkedin.com/in/yourprofile" target="_blank">
+        <div>
+          <p class="contact-link-label">LinkedIn</p>
+          <p class="contact-link-value">linkedin.com/in/yourprofile</p>
+        </div>
+      </a>
+      <a class="contact-link" href="tel:0400000000">
+        <div>
+          <p class="contact-link-label">Phone</p>
+          <p class="contact-link-value">0400 000 000</p>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => entry.target.classList.add('visible'), i * 60);
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      const target = document.querySelector(a.getAttribute('href'));
+      if (target) {
+        e.preventDefault();
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
+  });
+</script>
+</body>
+</html>
