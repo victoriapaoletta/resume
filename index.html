@@ -442,6 +442,69 @@
   .qual-body {
     font-size: 0.8rem;
     color: var(--ink-faint);
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+  }
+
+  .qual-body span {
+    display: block;
+  }
+
+  /* TRAVEL */
+  .travel-section {
+    background: var(--paper);
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 6rem 2rem;
+  }
+
+  .travel-inner {
+    max-width: 100%;
+  }
+
+  .travel-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    gap: 5rem;
+    align-items: start;
+    margin-top: 3rem;
+  }
+
+  .travel-stat {
+    padding: 1.5rem 0;
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .travel-stat-number {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.5rem;
+    font-weight: 300;
+    color: var(--ink);
+    line-height: 1;
+    margin-bottom: 0.2rem;
+  }
+
+  .travel-stat-label {
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+  }
+
+  .travel-text p {
+    font-size: 1rem;
+    color: var(--ink-soft);
+    line-height: 1.85;
+    margin-bottom: 1.5rem;
+  }
+
+  .travel-text p:last-child { margin-bottom: 0; }
+
+  .travel-text strong {
+    color: var(--ink);
+    font-weight: 500;
   }
 
   /* ABOUT */
@@ -489,7 +552,7 @@
 
   /* CONTACT */
   #contact {
-    background: var(--ink);
+    background: #0f1623;
     color: var(--paper);
     max-width: 100%;
     padding: 5rem 2rem;
@@ -625,6 +688,7 @@
     <li><a href="#modes">What I do</a></li>
     <li><a href="#experience">Experience</a></li>
     <li><a href="#qualifications">Qualifications</a></li>
+    <li><a href="#travel">Career Break</a></li>
     <li><a href="#about">About</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
@@ -664,7 +728,22 @@
         </span>
         <span class="mode-arrow">→</span>
       </a>
-      <p style="font-size:0.8rem;color:var(--ink-faint);padding:0.5rem 0.25rem;line-height:1.6;">Also available for admin, reception, and retail roles — particularly within health, fitness, and lifestyle businesses.</p>
+      <a class="mode-card admin" href="#admin">
+        <span class="mode-dot"></span>
+        <span class="mode-card-text">
+          <span class="mode-card-title">Admin, Ops &amp; Reception</span>
+          <span class="mode-card-sub">Wellness &amp; fitness businesses</span>
+        </span>
+        <span class="mode-arrow">→</span>
+      </a>
+      <a class="mode-card retail" href="#retail">
+        <span class="mode-dot"></span>
+        <span class="mode-card-text">
+          <span class="mode-card-title">Retail &amp; Customer Service</span>
+          <span class="mode-card-sub">Sports · Fashion · Lifestyle</span>
+        </span>
+        <span class="mode-arrow">→</span>
+      </a>
     </div>
   </div>
 </div>
@@ -712,12 +791,35 @@
       <a class="career-cta" href="#contact">Get in touch →</a>
     </div>
 
-  </div>
+    <div class="career-card admin fade-up" id="admin" style="transition-delay:0.15s;">
+      <div class="career-card-accent"></div>
+      <h3 class="career-card-title">Admin, Ops &amp; Reception</h3>
+      <p class="career-card-desc">A rare combination: the organisational rigour of a senior analyst, the warmth of a fitness instructor, and the client-facing polish of someone who has handled 40–60 daily queries in a fast-paced corporate helpdesk. Ideal for studios, gyms, and wellness businesses that want their front desk to genuinely understand their clients.</p>
+      <div class="career-skills">
+        <span class="skill-chip">Client communication</span>
+        <span class="skill-chip">Scheduling</span>
+        <span class="skill-chip">CRM &amp; databases</span>
+        <span class="skill-chip">Email marketing</span>
+        <span class="skill-chip">Process automation</span>
+        <span class="skill-chip">Reporting</span>
+      </div>
+      <a class="career-cta" href="#contact">Get in touch →</a>
+    </div>
 
-  <div class="career-card fade-up" id="admin" style="margin-top:1.5rem;border-left:3px solid var(--rule);border-radius:0 12px 12px 0;background:white;">
-    <p style="font-size:0.7rem;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:var(--ink-faint);margin-bottom:0.6rem;">Also available for</p>
-    <p style="font-size:1rem;font-weight:500;color:var(--ink);margin-bottom:0.5rem;">Admin, Reception &amp; Retail roles</p>
-    <p style="font-size:0.875rem;color:var(--ink-soft);line-height:1.7;max-width:780px;">Particularly within health, fitness, and lifestyle businesses. My background in high-volume client communication (40–60 daily queries at Bloomberg), lead conversion, and cross-cultural people skills translates naturally to front-desk, operations, and customer-facing retail roles — especially in environments where a genuine understanding of active lifestyles matters.</p>
+    <div class="career-card retail fade-up" id="retail" style="transition-delay:0.2s;">
+      <div class="career-card-accent"></div>
+      <h3 class="career-card-title">Retail &amp; Customer Service</h3>
+      <p class="career-card-desc">Cross-cultural communication honed across 20+ countries, genuine passion for health and active lifestyles, and a natural ability to build rapport quickly. A great fit for sports, fitness, fashion, and lifestyle retail — someone who can advise customers authentically because they actually live it.</p>
+      <div class="career-skills">
+        <span class="skill-chip">Customer service</span>
+        <span class="skill-chip">Cross-cultural comms</span>
+        <span class="skill-chip">Product knowledge</span>
+        <span class="skill-chip">Team collaboration</span>
+        <span class="skill-chip">Activewear &amp; sports</span>
+      </div>
+      <a class="career-cta" href="#contact">Get in touch →</a>
+    </div>
+
   </div>
 </section>
 
@@ -827,42 +929,100 @@
       <div class="qual-card fade-up">
         <span class="qual-icon">🏊</span>
         <p class="qual-title">Teacher of Swimming &amp; Water Safety</p>
-        <p class="qual-body">AUSTSWIM · Sydney NSW · Dec 2025</p>
+        <p class="qual-body">
+          <span>AUSTSWIM</span>
+          <span>Sydney, NSW</span>
+          <span>Dec 2025</span>
+        </p>
       </div>
 
       <div class="qual-card fade-up">
         <span class="qual-icon">🧘</span>
         <p class="qual-title">Level 3 Diploma in Teaching Mat Pilates</p>
-        <p class="qual-body">London Pilates Academy · YMCA Awards &amp; CIMSPA Endorsed · Oct 2025</p>
+        <p class="qual-body">
+          <span>London Pilates Academy</span>
+          <span>YMCA Awards &amp; CIMSPA Endorsed</span>
+          <span>Oct 2025</span>
+        </p>
       </div>
 
       <div class="qual-card fade-up">
         <span class="qual-icon">🩺</span>
         <p class="qual-title">First Aid &amp; CPR</p>
-        <p class="qual-body">Australian Red Cross · HLTAID009 / 010 / 011 · Nov 2025</p>
+        <p class="qual-body">
+          <span>Australian Red Cross</span>
+          <span>HLTAID009 / HLTAID010 / HLTAID011</span>
+          <span>Nov 2025</span>
+        </p>
       </div>
 
       <div class="qual-card fade-up">
         <span class="qual-icon">✅</span>
         <p class="qual-title">Working With Children Check</p>
-        <p class="qual-body">NSW · Current &amp; valid · Nov 2025</p>
+        <p class="qual-body">
+          <span>NSW Government</span>
+          <span>Current &amp; valid</span>
+          <span>Nov 2025</span>
+        </p>
       </div>
 
       <div class="qual-card fade-up">
         <span class="qual-icon">📊</span>
         <p class="qual-title">Data Analyst Level 4 Apprenticeship</p>
-        <p class="qual-body">Multiverse, UK · 2020–2021</p>
+        <p class="qual-body">
+          <span>Multiverse, UK</span>
+          <span>2020 – 2021</span>
+        </p>
       </div>
 
       <div class="qual-card fade-up">
         <span class="qual-icon">📐</span>
         <p class="qual-title">Certified Actuarial Analyst (CAA)</p>
-        <p class="qual-body">CAA Global, UK · 2014–2017</p>
+        <p class="qual-body">
+          <span>CAA Global, UK</span>
+          <span>2014 – 2017</span>
+        </p>
       </div>
 
     </div>
   </div>
 </section>
+
+<!-- TRAVEL -->
+<div class="travel-section" id="travel">
+  <div class="travel-inner">
+    <div class="section-rule"></div>
+    <div>
+      <p class="section-label">Career Break</p>
+      <h2 class="section-title">The journey that<br><em>changed everything</em></h2>
+    </div>
+    <div class="travel-grid">
+      <div>
+        <div class="travel-stat">
+          <p class="travel-stat-number">20+</p>
+          <p class="travel-stat-label">Countries visited</p>
+        </div>
+        <div class="travel-stat">
+          <p class="travel-stat-number">4</p>
+          <p class="travel-stat-label">Continents explored</p>
+        </div>
+        <div class="travel-stat">
+          <p class="travel-stat-number">2</p>
+          <p class="travel-stat-label">Years on the road</p>
+        </div>
+        <div class="travel-stat" style="border-bottom:none;">
+          <p class="travel-stat-number">1</p>
+          <p class="travel-stat-label">Life-changing decision</p>
+        </div>
+      </div>
+      <div class="travel-text">
+        <p>In October 2023, after nearly a decade in corporate analytics, I made a deliberate choice to step away — not to escape, but to explore. What followed was two years of independent travel across more than 20 countries, through Europe, Asia, the Americas, and Oceania.</p>
+        <p>Travel taught me things no office could. Navigating unfamiliar systems, communicating across language barriers, adapting plans on the fly — these became second nature. I learned to read people quickly, to find common ground with strangers, and to stay composed when nothing goes to plan. That <strong>cross-cultural fluency</strong> now shapes how I connect with clients, students, and colleagues from every background.</p>
+        <p>The road also clarified what mattered most to me: movement, health, and being genuinely useful to people. By the time I arrived in Sydney, I knew exactly what I wanted to do next — and I had the qualifications to back it up.</p>
+      </div>
+    </div>
+  </div>
+</div>
 
 <!-- ABOUT -->
 <section id="about">
@@ -892,14 +1052,14 @@
         <p class="fact-value">Competitive swimming, 10 years<br><span style="font-size:0.85rem;color:var(--ink-faint);">Regional &amp; national level</span></p>
       </div>
       <div class="fact-item">
-        <p class="fact-label">Travel</p>
-        <p class="fact-value">20+ countries across 4 continents</p>
+        <p class="fact-label">Currently</p>
+        <p class="fact-value">Swimming Instructor &amp; contractor,<br><span style="font-size:0.85rem;color:var(--ink-faint);">Sydney NSW</span></p>
       </div>
     </div>
     <div class="about-text">
-      <p>I spent nine years as a Senior Data Analyst — at Bloomberg in London and Zurich Insurance — learning how to find clarity in complexity and communicate it to people who need to act on it. That precision and curiosity has stayed with me through every chapter since.</p>
-      <p>After nearly a decade in corporate analytics, I took two years to travel and recharge — 20+ countries, dozens of cultures, and a complete reset. Along the way, I discovered a deeper commitment to health, movement, and teaching. I came back qualified as both a <strong>Mat Pilates Instructor</strong> and a <strong>Swimming Teacher</strong>, and now I split my time between the pool deck and continued professional work.</p>
-      <p>I'm the kind of person who brings analytical rigour to whatever I'm doing — whether that's designing a dashboard, planning a swim lesson, or helping a customer find the right product. I'm genuinely curious about people, reliable under pressure, and always looking to add more than expected.</p>
+      <p>I'm the kind of person who brings the same level of care and attention to everything — whether that's designing an analytics dashboard, planning a swim lesson, or making sure a customer leaves with exactly what they need. I don't do things halfway, and I genuinely enjoy the work, whatever it is.</p>
+      <p>I thrive in environments where people matter. I'm patient with those who are learning, clear with those who need answers quickly, and comfortable adapting my communication style to whoever I'm talking to. Nine years in a fast-paced corporate helpdesk teaches you a lot about staying calm, being precise, and making people feel heard — and those habits have followed me into every role since.</p>
+      <p>Right now, I'm building a life in Sydney that centres on health, movement, and meaningful work. I'm open to roles that play to any part of my background — and I always bring more to the table than the job description asks for.</p>
     </div>
   </div>
 </section>
