@@ -886,27 +886,12 @@
     </div>
 
     <div>
-      <p style="font-size:0.7rem;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:var(--ink-faint);margin-bottom:1.5rem;">Download my resume</p>
-      <p style="font-size:0.875rem;color:var(--ink-soft);margin-bottom:1.25rem;line-height:1.7;">Each version is tailored for a different type of role. Download the one that's relevant — or reach out and I'll send you exactly what you need.</p>
-
-      <div style="display:flex;flex-direction:column;gap:0.75rem;">
-        <a class="dl-btn" href="resume-data-analyst.pdf" download>
-          <span class="dl-dot" style="background:var(--accent-data);"></span>
-          Data &amp; Analytics Resume
-        </a>
-        <a class="dl-btn" href="resume-fitness.pdf" download>
-          <span class="dl-dot" style="background:var(--accent-fitness);"></span>
-          Fitness &amp; Instruction Resume
-        </a>
-        <a class="dl-btn" href="resume-admin-ops.pdf" download>
-          <span class="dl-dot" style="background:var(--accent-admin);"></span>
-          Admin &amp; Operations Resume
-        </a>
-        <a class="dl-btn" href="resume-retail.pdf" download>
-          <span class="dl-dot" style="background:var(--accent-retail);"></span>
-          Retail &amp; Customer Service Resume
-        </a>
-      </div>
+      <p style="font-size:0.7rem;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;color:var(--ink-faint);margin-bottom:1.5rem;">My resume</p>
+      <p style="font-size:0.95rem;color:var(--ink);font-weight:500;margin-bottom:0.75rem;line-height:1.6;">Tailored versions available on request.</p>
+      <p style="font-size:0.875rem;color:var(--ink-soft);margin-bottom:1.5rem;line-height:1.7;">I have resumes tailored for data & analytics, fitness & instruction, admin & operations, and retail & customer service roles. Get in touch via the contact form and I'll send the relevant one over.</p>
+      <a href="#contact" class="dl-btn" style="display:inline-flex;text-decoration:none;">
+        <span style="font-size:0.85rem;">Get in touch →</span>
+      </a>
     </div>
   </div>
 </section>
@@ -1071,21 +1056,24 @@
     <div>
       <p style="font-size:0.7rem;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;color:#9a9690;margin-bottom:1rem;">Get in touch</p>
       <h2 class="contact-title">Let's work<br><em>together</em></h2>
-      <p class="contact-sub">Whether you need a data contractor, a fitness instructor, a studio receptionist, or someone to bring energy to your retail floor — I'd love to hear from you.</p>
+      <p class="contact-sub">Whether you need a data contractor, a fitness instructor, a studio receptionist, or someone to bring energy to your retail floor, I'd love to hear from you.</p>
     </div>
-    <div class="contact-links">
-      <a class="contact-link" href="mailto:victoriapaolettajennings@gmail.com">
-        <div>
-          <p class="contact-link-label">Email</p>
-          <p class="contact-link-value">victoriapaolettajennings@gmail.com</p>
+    <div>
+      <form action="https://formspree.io/f/YOUR_FORMSPREE_ID" method="POST" class="contact-form">
+        <div class="form-group">
+          <label class="form-label" for="name">Your name</label>
+          <input class="form-input" type="text" id="name" name="name" required placeholder="Jane Smith">
         </div>
-      </a>
-      <a class="contact-link" href="tel:0404365190">
-        <div>
-          <p class="contact-link-label">Phone</p>
-          <p class="contact-link-value">0404 365 190</p>
+        <div class="form-group">
+          <label class="form-label" for="email">Your email</label>
+          <input class="form-input" type="email" id="email" name="email" required placeholder="jane@example.com">
         </div>
-      </a>
+        <div class="form-group">
+          <label class="form-label" for="message">Message</label>
+          <textarea class="form-input form-textarea" id="message" name="message" required placeholder="Tell me a bit about the role or opportunity..."></textarea>
+        </div>
+        <button class="form-submit" type="submit">Send message</button>
+      </form>
     </div>
   </div>
 </section>
